@@ -5,6 +5,11 @@ var app = require('http').createServer(handler)
 var port = process.env.PORT || 5000;
 console.log("Listening on " + port);
  
+io.configure(function () { 
+  io.set("transports", ["xhr-polling"]); 
+  io.set("polling duration", 10); 
+});
+ 
 app.listen(port);
 
 function handler (req, res) {
